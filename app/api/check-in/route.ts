@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { redis } from '@/lib/redis';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
       timestamp: new Date().toISOString(),
     };
 
-    await kv.lpush('checkins', JSON.stringify(checkIn));
+    await redis.lpush('checkins', JSON.stringify(checkIn));
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {

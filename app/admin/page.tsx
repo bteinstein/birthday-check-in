@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { redis } from '@/lib/redis';
 import Link from 'next/link';
 import AdminLoginForm from './login-form';
 
@@ -39,7 +39,7 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
 
   let checkIns: CheckIn[] = [];
   try {
-    const raw = await kv.lrange<string>('checkins', 0, -1);
+    const raw = await redis.lrange<string>('checkins', 0, -1);
     checkIns = raw.map((item) =>
       typeof item === 'string' ? JSON.parse(item) : item
     );

@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { redis } from '@/lib/redis';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const raw = await kv.lrange<string>('checkins', 0, -1);
+    const raw = await redis.lrange<string>('checkins', 0, -1);
     const checkIns = raw.map((item) =>
       typeof item === 'string' ? JSON.parse(item) : item
     );
