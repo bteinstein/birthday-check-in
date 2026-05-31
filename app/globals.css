@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #054734;
+    color: #F4F1E6;
+    min-height: 100vh;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .gold-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .gold-divider::before,
+  .gold-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #C9A84C;
+    opacity: 0.6;
+  }
+
+  .gold-divider-diamond {
+    color: #C9A84C;
+    font-size: 0.6rem;
+    opacity: 0.9;
+  }
+
+  .silver-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .silver-divider::before,
+  .silver-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #C0C0C0;
+    opacity: 0.4;
+  }
+}
