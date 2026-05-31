@@ -22,7 +22,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {
-    console.error('Check-in error:', err);
-    return NextResponse.json({ error: 'Server error. Please try again.' }, { status: 500 });
+    const message = err instanceof Error ? err.message : String(err);
+    console.error('Check-in error:', message);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
